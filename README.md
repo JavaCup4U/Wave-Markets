@@ -73,6 +73,9 @@ Market waves is an application that allows users to serach for prices of equitie
 
 
 
+## Video WalkThrough 
+[![Video Title](https://img.youtube.com/vi/8jE1te0VdEY/0.jpg)](https://www.youtube.com/shorts/8jE1te0VdEY?si=Uz7hKVUPmudMY3dF)
+
 
 ## Schema 
 
