@@ -25,18 +25,7 @@ struct Stocks{
 
 
 
-enum stocksInfo {
-    case price
-    case symbol
-    case volume
-    case high
-    case low
-    case close
-    
-    
-  
-    
-}
+
 // a list of stocks that has their own data
 
 let stockList: [Stocks] = [

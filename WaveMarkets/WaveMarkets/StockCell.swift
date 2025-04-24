@@ -8,7 +8,7 @@
 import UIKit
 
 class StockCell: UITableViewCell {
-    
+    // labels for the stock cell 
     @IBOutlet weak var symbolLabel: UILabel!
     
     @IBOutlet weak var priceLabel: UILabel!
