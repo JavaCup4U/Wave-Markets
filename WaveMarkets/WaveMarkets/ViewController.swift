@@ -26,6 +26,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+    // override func to pass the detail screen data from the selected stock in the table view
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToDetailView"{ // storyboard segue id identifier
+            let destinationVC = segue.destination as! DetailViewController
+            if let indexPath = tableView.indexPathForSelectedRow{
+                destinationVC.stock = stockList[indexPath.row]
+            }
+            
+        }
+        
+    }
     
    
     

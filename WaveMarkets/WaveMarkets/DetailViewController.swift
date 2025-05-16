@@ -13,14 +13,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var SymbolLabel: UILabel!
     
     
-    @IBOutlet weak var VolumeLabel: UILabel!
     
     
-    @IBOutlet weak var HighLabel: UILabel!
-    
-    @IBOutlet weak var LowLabel: UILabel!
-    
-    @IBOutlet weak var CloseLabel: UILabel!
+  
     
     @IBOutlet weak var PriceLabel: UILabel!
     
@@ -34,10 +29,20 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var ClosePriceLabel: UILabel!
     
-    
+    // property to store the stock
+    var stock: Stocks!
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        // configure labels in detail view
+        SymbolLabel.text = stock?.symbol.first
+        PriceLabel.text = "\(String(stock.price))"
+        VolumeValueLabel.text = "Volume: \(String(stock.volume))"
+        HighPriceLabel.text = "High: \(String(stock.high))"
+        LowPriceLabel.text = "Low: \(String(stock.low))"
+        ClosePriceLabel.text = "Close: \(String(stock.close))"
+        
+        
         
     
 
