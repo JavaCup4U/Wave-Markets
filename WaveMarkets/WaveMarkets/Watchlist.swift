@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // structure to store the watchlist  symbol and price
-struct WatchlistItem{
+struct WatchlistItem: Codable{
     let symbol: String
     let price: Double
     
