@@ -7,9 +7,32 @@
 
 import UIKit
 
-class WatchlistViewController: UIViewController {
+class WatchlistViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return watchListItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath)
+        let item = watchListItems[indexPath.row]
+        cell.textLabel?.text = item.symbol
+        cell.detailTextLabel?.text = "$\(item.price)"
+        
+        return cell
+    }
+  
+    // table view for the watchList
+    
+   
     
     
+  
+    
+    var watchListItems: [WatchlistItem] = []
+    
+    
+    
+  
     
     
     
@@ -19,6 +42,13 @@ class WatchlistViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // load the watchlist
+        listView.dataSource = self
+        listView.delegate = self
+        
+        watchListItems = loadWatchList()
+        listView.reloadData()
+        
     }
     
 
@@ -33,3 +63,6 @@ class WatchlistViewController: UIViewController {
     */
 
 }
+
+
+

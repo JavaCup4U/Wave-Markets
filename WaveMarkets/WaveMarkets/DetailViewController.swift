@@ -58,37 +58,10 @@ class DetailViewController: UIViewController {
             print(currentWatchList)
         }
     
-        
-        
     }
     
     
-    // function to save watchlist
-    func saveWatchList(_ list: [WatchlistItem]){
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(list){
-            UserDefaults.standard.set(encoded, forKey: "watchlist")
-        }
-        
-    }
     
-    // function to load the watchlist
-    
-    func loadWatchList() -> [WatchlistItem] {
-        if let data = UserDefaults.standard.data(forKey: "watchlist"){
-            let decoder = JSONDecoder()
-            if let list = try? decoder.decode([WatchlistItem].self, from: data){
-                return list
-            }
-        }
-        return []
-    }
-    
-    
-    func RemoveFromWatchList(_ symbol: String){
-        // get all watchlist from user defaults
-       
-    }
     
     
     
@@ -116,12 +89,7 @@ class DetailViewController: UIViewController {
     
     
     
-    
-    
-    
-    
-    
-    
+
     
     
 
@@ -135,4 +103,47 @@ class DetailViewController: UIViewController {
     }
     */
 
+}
+
+
+
+
+
+// function to save watchlist
+func saveWatchList(_ list: [WatchlistItem]){
+    let encoder = JSONEncoder()
+    if let encoded = try? encoder.encode(list){
+        UserDefaults.standard.set(encoded, forKey: "watchlist")
+    }
+    
+}
+
+// function to load the watchlist
+
+func loadWatchList() -> [WatchlistItem] {
+    if let data = UserDefaults.standard.data(forKey: "watchlist"){
+        let decoder = JSONDecoder()
+        if let list = try? decoder.decode([WatchlistItem].self, from: data){
+            return list
+        }
+    }
+    return []
+}
+
+
+func RemoveFromWatchList(_ symbol: String){
+    // get all watchlist from user defaults
+    let currentList = loadWatchList()
+    
+    // remove the stock from the watchlist
+    var updatedList = currentList
+    
+    updatedList.removeAll() { $0.symbol == symbol}
+    
+    //save the updated list
+    saveWatchList(updatedList)
+    
+    
+    
+   
 }
