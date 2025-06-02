@@ -7,28 +7,36 @@
 
 import UIKit
 
+
 class WatchlistViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    var watchList: [Stocks] = []
+    
+    @IBOutlet weak var watchListTableView: UITableView!
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return watchListItems.count
+        return watchList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath)
-        let item = watchListItems[indexPath.row]
-        cell.textLabel?.text = item.symbol
-        cell.detailTextLabel?.text = "$\(item.price)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath) as! StockCell
+        
+        // get the stock associated with the table view row
+        let stock = watchList[indexPath.row]
+        
+        //configure the cell (update the elements and labels )
+        cell.textLabel?.text = stock.symbol
+        cell.detailTextLabel?.text = "$\(stock.price)"
         
         return cell
     }
   
-    // table view for the watchList
     
    
     
-    
-  
-    
-    var watchListItems: [WatchlistItem] = []
+
     
     
     
@@ -38,17 +46,19 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
     
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        // load the watchlist
-        listView.dataSource = self
-        listView.delegate = self
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
-        watchListItems = loadWatchList()
-        listView.reloadData()
+        // get index path for the selcted row
         
+        guard let selectedIndexPath = watchListTableView.indexPathForSelectedRow else {return}
+        
+        // get the selected stock from the list and use the the selected index's path's row
+        let selectedStock = watchList[selectedIndexPath.row]
+        
+        // get access to the watchlist view controller via the segue's destination (guard to unwrap the optional)
+        guard let destinationViewController = segue.destination as? DetailViewController else {return}
+        
+        destinationViewController.stock = selectedStock
     }
     
 

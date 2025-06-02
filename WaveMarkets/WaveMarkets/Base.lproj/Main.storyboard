@@ -231,10 +231,10 @@
             </objects>
             <point key="canvasLocation" x="1860.3053435114502" y="-940.14084507042253"/>
         </scene>
-        <!--Equity Feed -->
+        <!--Tab Bar Controller-->
         <scene sceneID="45Z-Zy-FiF">
             <objects>
-                <tabBarController title="Equity Feed " automaticallyAdjustsScrollViewInsets="NO" id="DLz-2H-Iam" sceneMemberID="viewController">
+                <tabBarController title="Tab Bar Controller" automaticallyAdjustsScrollViewInsets="NO" id="DLz-2H-Iam" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tF3-Df-9sq">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -253,7 +253,7 @@
         <!--WatchListViewController-->
         <scene sceneID="aU5-EB-pJv">
             <objects>
-                <viewController title="WatchListViewController" id="dDB-Qw-BR2" sceneMemberID="viewController">
+                <viewController title="WatchListViewController" id="dDB-Qw-BR2" customClass="WatchlistViewController" customModule="WaveMarkets" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="55f-7M-dnG">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,6 +278,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Watchlist" id="92Y-NS-S5a"/>
+                    <connections>
+                        <outlet property="watchListTableView" destination="xjP-pH-JWN" id="hdH-MP-OUh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YY5-lg-bYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

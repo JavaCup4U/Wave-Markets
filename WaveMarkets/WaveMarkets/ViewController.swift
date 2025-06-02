@@ -19,8 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath) as! StockCell
         let stock = stockList[indexPath.row]
         // configure cell
-        cell.symbolLabel?.text = stock.symbol.first ?? "N/A"
-        // get the row where the cell will be placed using row property
+        cell.symbolLabel?.text = stock.symbol        // get the row where the cell will be placed using row property
         cell.priceLabel?.text  = "$\(String(format: "%.2f", stock.price))"
         // return the cell for use in respective table view row
         return cell
