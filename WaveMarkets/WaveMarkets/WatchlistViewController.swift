@@ -11,38 +11,65 @@ import UIKit
 class WatchlistViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-    var watchList: [Stocks] = []
+    
     
     @IBOutlet weak var watchListTableView: UITableView!
     
+    
+    var watchList: [Stock] = []
+    
+    
+    // sets up the table view delegate and data source
+    // configures the nav bar title
+    // runs once the view controller is first loaded
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        watchListTableView.dataSource = self
+        watchListTableView.delegate = self
+        
+        
+        
+    }
+    
+    // reloads the watchList from UserDefaults
+    // Refreshes the table view with .reloadData()
+    // Runs every time you return to watchlist screen
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        
+        // load the watchlist from UserDefaults
+        watchList = Stock.getStocks(forKey: Stock.watchListKey)
+        
+        // reload the table view with the updated data
+        watchListTableView.reloadData()
+    }
+    
+    
+    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return watchList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath) as! StockCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WatchListCell", for: indexPath) as! StockCell
         
         // get the stock associated with the table view row
         let stock = watchList[indexPath.row]
         
         //configure the cell (update the elements and labels )
-        cell.textLabel?.text = stock.symbol
-        cell.detailTextLabel?.text = "$\(stock.price)"
+        cell.symbolLabel?.text = stock.symbol
+        cell.priceLabel.text = "$\(stock.price)"
         
         return cell
     }
   
     
    
-    
-
-    
-    
-    
-  
-    
-    
     
     
 
@@ -61,7 +88,7 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
         destinationViewController.stock = selectedStock
     }
     
-
+    
     /*
     // MARK: - Navigation
 

@@ -17,10 +17,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //create , configure , and return a table view cell for the given row
         // create cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath) as! StockCell
-        let stock = stockList[indexPath.row]
+        let currentStock = stockList[indexPath.row]
         // configure cell
-        cell.symbolLabel?.text = stock.symbol        // get the row where the cell will be placed using row property
-        cell.priceLabel?.text  = "$\(String(format: "%.2f", stock.price))"
+        cell.symbolLabel?.text = currentStock.symbol        // get the row where the cell will be placed using row property
+        cell.priceLabel?.text  = "$\(String(format: "%.2f", currentStock.price))"
         // return the cell for use in respective table view row
         return cell
     }
@@ -45,11 +45,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-        tableView.dataSource = self
-        tableView.delegate = self
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.dataSource = self
     }
 
 

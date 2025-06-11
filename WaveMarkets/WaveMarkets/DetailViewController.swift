@@ -36,6 +36,15 @@ class DetailViewController: UIViewController {
         // set the button's isSelected state to the opposite of its current value
         sender.isSelected  = !sender.isSelected
         
+        //1 . if the button is in the *selected* state -> add the stock to the watchlist
+        
+        if sender.isSelected{
+            stock.addToWatchList()
+        }
+        //2. otherwise, the button is in the *un-selected* state -> remove the stock from the watchlist
+        else {
+            stock.removeFromWatchlist()
+        }
         
     
     }
@@ -46,7 +55,7 @@ class DetailViewController: UIViewController {
     
     
     // property to store the stock
-    var stock: Stocks!
+    var stock: Stock!
   
     override func viewDidLoad() {
         super.viewDidLoad()
