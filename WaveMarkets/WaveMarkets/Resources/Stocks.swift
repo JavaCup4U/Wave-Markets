@@ -138,7 +138,11 @@ extension Stock {
         //1.
         var watchList = Stock.getStocks(forKey: Stock.watchListKey)
         // 2.
-        watchList.append(self)
+        // if the symbol does not exist in the watchlist array we add it to our watchlist
+        if  !watchList.contains(where: {$0.symbol == self.symbol}){
+            watchList.append(self)
+        }
+       
         // 3. save the updated watchList array
         Stock.save(watchList, forKey: Stock.watchListKey)
         

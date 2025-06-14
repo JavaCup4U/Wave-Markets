@@ -191,7 +191,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihV-Sr-RCP">
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihV-Sr-RCP">
                                         <rect key="frame" x="113.33333333333333" y="429" width="166.66666666666669" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="7Z4-NO-eah"/>

@@ -77,7 +77,16 @@ class DetailViewController: UIViewController {
     
     
     
-    
+    // checks if stock is still in watchlist and updates it accordingly
+    override func viewWillAppear(_ animated: Bool){
+        // check if stock is still in the watchlist
+        let currentWatchList = Stock.getStocks(forKey: Stock.watchListKey)
+        let isInWatchList = currentWatchList.contains{ $0.symbol.first == stock.symbol.first }
+        
+        // update the button state
+        AddToWatchListButton.isSelected = isInWatchList
+    }
+
     
 
     
@@ -94,6 +103,7 @@ class DetailViewController: UIViewController {
     */
 
 }
+
 
 
 

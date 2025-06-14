@@ -72,6 +72,9 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
    
     
     
+    
+   
+    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
@@ -100,6 +103,37 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
     */
 
 }
+
+
+
+// An extension to group all table view data source related methods
+
+extension WatchlistViewController {
+    
+    //Enable "Swipe to Delete " Functionality . THe existance of this data source method  enables the default "Swipe to delete "
+    //1. Handle the "delete" case:
+    // 2. Remove theh associated stock sybmol from the watchlist array
+    // 3. Save the updated watchlist array
+    // 4. Tell the table view to delete the associated row
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        // 1.
+        if editingStyle == .delete {
+            //2.
+            watchList.remove(at: indexPath.row)
+            // Unselect the favorite button for that stock
+            
+            // 3.
+            Stock.save(watchList, forKey: "watchList")
+            //4.
+            tableView.deleteRows(at: [indexPath], with: .automatic )
+            
+        }
+    }
+    
+}
+
+
 
 
 
