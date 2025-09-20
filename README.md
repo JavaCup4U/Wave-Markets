@@ -76,6 +76,10 @@ Market waves is an application that allows users to serach for prices of equitie
 ## Video WalkThrough 
 [![Video Title](https://img.youtube.com/vi/8jE1te0VdEY/0.jpg)](https://www.youtube.com/shorts/8jE1te0VdEY?si=Uz7hKVUPmudMY3dF)
 
+Video 2 with updated time requests using Twelve Data API 
+
+[![Video Title](https://img.youtube.com/vi/M6_i0kJMV9k/0.jpg)](https://www.youtube.com/shorts/M6_i0kJMV9k?si=Uz7hKVUPmudMY3dF)
+
 
 ## Schema 
 
@@ -87,4 +91,4 @@ Market waves is an application that allows users to serach for prices of equitie
 
 ### Networking
 
-- No network requests or endpoints implemented yet.
+- With the most recent update we are making use of Twelve Data API to make requests for price retrieval.
